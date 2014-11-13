@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.license       = "GNU"
 
-  s.add_runtime_dependency 'recursive-open-struct', '~> 0.5.0'
-  s.add_runtime_dependency 'httparty', '~> 0.13.1'
+  s.add_runtime_dependency 'recursive-open-struct', '~> 0.5', '>= 0.5.0'
+  s.add_runtime_dependency 'httparty', '~> 0.13', '>= 0.13.1'
 end
