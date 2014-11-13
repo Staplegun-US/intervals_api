@@ -18,7 +18,7 @@ intervals = IntervalsAPI::RequestHandler.new('your_token')
 
 Now you're free to make your requests. The structure of a request looks like:
 
-``ruby
+```ruby
 intervals.get(resource, query_options)
 ```
 
