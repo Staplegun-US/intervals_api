@@ -10,7 +10,7 @@ create, update, and delete several different resources from their database.
 
 To begin, create an instance of your specific Intervals account using the
 account's API token. You can [learn where to find that
-here](http://www.myintervals.com/api/authentication.php)
+here](http://www.myintervals.com/api/authentication.php).
 
 ```ruby
 intervals = IntervalsAPI::RequestHandler.new('your_token')
@@ -31,6 +31,7 @@ The endpoint resource you are querying
 
 #### query_options
 Type: `Hash`
+Default: `{}`
 
 A hash of options that you wish to query by. This could be filter options for a
 GET request, new object options for a POST request, etc.
@@ -42,25 +43,25 @@ about which resources and query options are available to use
 
 The response from Intervals API will contain all returned data from Intervals in the form of a hash.
 
-### Request Types Examples
+### Request Type Examples
 
 #### Get
 
 ```ruby
 # Retrieve all clients
-intervals.get('/client/');
+response = intervals.get('/client/');
 ```
 
 ```ruby
 # Retrieve all active clients
-intervals.get('/client/', { active: true });
+response = intervals.get('/client/', { active: true });
 ```
 
 #### Post
 
 ```ruby
 # Create a task request
-intervals.post("/request/", {
+intervals.post('/request/', {
   personid:     5,
   projectid:    6,
   title:        'Just an average title'
@@ -71,9 +72,9 @@ intervals.post("/request/", {
 
 ```ruby
 # Update a task request
-intervals.post("/request/1/", {
+intervals.post('/request/1/', {
   priorityid:   1,
-  title:        'Here's an updated title'
+  title:        "Here's an updated title"
 })
 ```
 
@@ -81,8 +82,16 @@ intervals.post("/request/1/", {
 
 ```ruby
 # Delete a task request
-intervals.delete("/request/1/"})
+intervals.delete('/request/1/')
 ```
 
+## TODO
+
+Build a test suite to test the API. If anyone has a great way to test an
+authenticated third-party API, throw out some ideas.
+
 <hr />
+Intervals API is licensed under the [GPL](http://www.gnu.org/licenses/gpl.html)
+license.
+
 [Staplegun](http://staplegun.us)
