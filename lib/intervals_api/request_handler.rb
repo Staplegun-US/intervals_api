@@ -19,7 +19,7 @@ module IntervalsAPI
     end
 
     %w(get post put delete options).each do |request_type|
-      define_method request_type do |url, query|
+      define_method request_type do |url, query = {}|
         RecursiveOpenStruct.new(
           self.class.send(
             request_type,
