@@ -41,7 +41,7 @@ about which resources and query options are available to use
 
 ### Response
 
-The response from Intervals API will contain all returned data from Intervals in the form of a hash.
+The response from Intervals API will contain all returned json data from Intervals in the form of a hash.
 
 ### Request Type Examples
 
