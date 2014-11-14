@@ -72,7 +72,7 @@ intervals.post('/request/', {
 
 ```ruby
 # Update a task request
-intervals.post('/request/1/', {
+intervals.put('/request/1/', {
   priorityid:   1,
   title:        "Here's an updated title"
 })
