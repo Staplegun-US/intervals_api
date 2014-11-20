@@ -21,7 +21,7 @@ module IntervalsAPI
           self.class.send(
             request_type,
             url,
-            @default_options.deep_merge({ body: query.to_json })
+            @default_options.merge({ query: query })
           )
         )
       end
