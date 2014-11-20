@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'recursive-open-struct', '~> 0.5', '>= 0.5.0'
   s.add_runtime_dependency 'httparty', '~> 0.13', '>= 0.13.1'
+  s.add_runtime_dependency 'deep_merge', '~> 1.0.1', '>= 1.0.1'
 end
