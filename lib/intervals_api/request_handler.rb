@@ -7,9 +7,6 @@ module IntervalsAPI
 
     def initialize(token)
       @default_options = {
-        query: {
-          limit: 0 # return all records
-        },
         headers: {
           'Accept'        => 'application/json',
           'Content-Type'  => 'application/json',
