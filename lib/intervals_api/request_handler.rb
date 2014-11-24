@@ -12,23 +12,19 @@ module IntervalsAPI
           'Content-Type'  => 'application/json',
           'Authorization' => "Basic #{Base64.encode64(token + ":X")}"
         },
-        query:  {},
-        body:   {}
       }
     end
 
     %w(get post put delete options).each do |request_type|
       define_method request_type do |url, options = {}|
+
+        query_options = @default_options
+        query_options[:headers].merge(options[:headers])  if options.key?(:header)
+        query_options[:query] = options[:query]           if options.key?(:query)
+        query_options[:body ] = options[:body ].to_json   if options.key?(:body)
+
         RecursiveOpenStruct.new(
-          self.class.send(
-            request_type,
-            url,
-            {
-              headers:  @default_options[:headers].merge( options[:headers].to_json),
-              query:    @default_options[:query].merge(   options[:query].to_json),
-              body:     @default_options[:body].merge(    options[:body].to_json)
-            }
-          )
+          self.class.send(request_type, url, query_options)
         )
       end
     end
