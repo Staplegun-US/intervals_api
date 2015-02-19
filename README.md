@@ -4,7 +4,9 @@ By [Staplegun](http://staplegun.us)
 ## Description
 
 This gem is a wrapper around the [Intervals](http://www.myintervals.com/) REST API which allows you to retrieve,
-create, update, and delete several different resources from their database.
+create, update, and delete several different resources from their database. All
+API requests are made with the help of the
+[HTTParty gem](https://github.com/jnunemaker/httparty).
 
 ## Usage
 
@@ -33,11 +35,19 @@ The endpoint resource you are querying
 Type: `Hash`
 Default: `{}`
 
-A hash of options that you wish to query by. This could be filter options for a
+A hash of options, such as filter options for a
 GET request, new object options for a POST request, etc.
 
-[View the Intervals documentation](http://www.myintervals.com/api/) to learn
-about which resources and query options are available to use
+Available keys (See in the examples how they're used):
+
+* *query*   - Query parameters that you wish to pass, typically via GET
+* *body*    - Data you wish to submit, typically via POST or PUT
+* *headers* - Request headers you wish to set
+
+[View the HTTParty gem](https://github.com/jnunemaker/httparty) to see more options
+about formatting your request, and
+[view the Intervals documentation](http://www.myintervals.com/api/) to learn
+about which resources are available to request.
 
 ### Response
 
@@ -54,14 +64,16 @@ response = intervals.get('/client/');
 
 ```ruby
 # Retrieve all active clients
-response = intervals.get('/client/', { active: true });
+response = intervals.get('/client/', query: {
+  active: true
+});
 ```
 
 #### Post
 
 ```ruby
 # Create a task request
-intervals.post('/request/', {
+intervals.post('/request/', body: {
   personid:     5,
   projectid:    6,
   title:        'Just an average title'
@@ -72,7 +84,7 @@ intervals.post('/request/', {
 
 ```ruby
 # Update a task request
-intervals.put('/request/1/', {
+intervals.put('/request/1/', body: {
   priorityid:   1,
   title:        "Here's an updated title"
 })

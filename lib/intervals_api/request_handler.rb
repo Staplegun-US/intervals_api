@@ -15,7 +15,7 @@ module IntervalsAPI
       }
     end
 
-    %w(get post put delete options).each do |request_type|
+    %w(get post put delete).each do |request_type|
       define_method request_type do |url, options = {}|
 
         query_options = @default_options
