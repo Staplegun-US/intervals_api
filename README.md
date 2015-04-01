@@ -40,9 +40,9 @@ GET request, new object options for a POST request, etc.
 
 Available keys (See in the examples how they're used):
 
-* *query*   - Query parameters that you wish to pass, typically via GET
-* *body*    - Data you wish to submit, typically via POST or PUT
-* *headers* - Request headers you wish to set
+* `query`   - Query parameters that you wish to pass, typically via GET requests
+* `body`    - Data you wish to submit, typically via POST or PUT requests
+* `headers` - Request headers you wish to set
 
 [View the HTTParty gem](https://github.com/jnunemaker/httparty) to see more options
 about formatting your request, and
