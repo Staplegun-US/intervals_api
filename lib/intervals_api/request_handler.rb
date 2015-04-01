@@ -6,18 +6,13 @@ module IntervalsAPI
     attr_accessor :default_options
 
     def initialize(token)
-      unless token
-        raise <<-MSG
-          Must instantiate with a valid Intervals token
-          Form: IntervalsAPI::RequestHandler.new(valid_token)
-        MSG
-      end
+      raise "Must instantiate with a valid Intervals API token" unless token
 
       @default_options = {
         headers: {
           'Accept'        => 'application/json',
           'Content-Type'  => 'application/json',
-          'Authorization' => "Basic #{Base64.encode64(token + ":X")}"
+          'Authorization' => "Basic #{Base64.encode64(token.to_s + ":X")}"
         },
       }
     end
